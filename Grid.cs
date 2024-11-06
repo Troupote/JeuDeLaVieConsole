@@ -47,7 +47,6 @@ namespace JeuDeLaVieConsole
         {
             int Counter = 0;
             List<Coords> Neighbors = getCoordsNeighbors(i + 1, j + 1);
-            Debug.Print("getnbaliveoukay");
 
             foreach (Coords neighbor in Neighbors)
             {
@@ -97,7 +96,6 @@ namespace JeuDeLaVieConsole
 
         public void DisplayGrid()
         {
-            Debug.Print("godisplay");
             string ToDisplay = "";
             for (int i = 0; i < n; i++)
             {
@@ -126,7 +124,6 @@ namespace JeuDeLaVieConsole
             }
             ToDisplay += "+\n";
 
-            Debug.Print(ToDisplay);
             Console.WriteLine(ToDisplay);
         }
 
