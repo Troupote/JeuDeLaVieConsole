@@ -47,6 +47,7 @@ namespace JeuDeLaVieConsole
         {
             int Counter = 0;
             List<Coords> Neighbors = getCoordsNeighbors(i, j);
+            Debug.Print("getnbaliveoukay");
 
             foreach (Coords neighbor in Neighbors)
             {
@@ -110,13 +111,14 @@ namespace JeuDeLaVieConsole
                 {
                     if (TabCells[i, j].isAlive)
                     {
-                        ToDisplay += "| X |";
+                        ToDisplay += "| X ";
                     }
                     else
                     {
-                        ToDisplay += "|   |";
+                        ToDisplay += "|   ";
                     }
                 }
+                ToDisplay += "|\n";
             }
             for (int j = 0; j < n; j++)
             {
@@ -124,8 +126,8 @@ namespace JeuDeLaVieConsole
             }
             ToDisplay += "+\n";
 
-            Console.WriteLine(ToDisplay);
             Debug.Print(ToDisplay);
+            Console.WriteLine(ToDisplay);
         }
     }
 }
