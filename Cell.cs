@@ -32,17 +32,17 @@ namespace JeuDeLaVieConsole
 
         public void ComeAlive()
         {
-            nextState = true;
+            this.nextState = true;
         }
 
         public void PassAway()
         {
-            nextState = false;
+            this.nextState = false;
         }
 
         public void Update()
         {
-            isAlive = nextState;
+            this.isAlive = this.nextState;
         }
     }
 }

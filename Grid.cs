@@ -16,7 +16,7 @@ namespace JeuDeLaVieConsole
         public int n
         {
             get { return _n; }
-            set { _n = value; }
+            set { this._n = value; }
         }
 
         Cell[,] TabCells;
@@ -24,7 +24,7 @@ namespace JeuDeLaVieConsole
         public Grid(int nbCells, List<Coords> AliveCellsCoords)
         {
             this.n = nbCells;
-            TabCells = new Cell[n, n];
+            this.TabCells = new Cell[n, n];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
