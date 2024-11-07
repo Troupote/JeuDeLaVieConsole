@@ -17,7 +17,7 @@ namespace JeuDeLaVieConsole
         {
             this.n = nbCells;
             this.iter = nbIterations;
-            this.AliveCellsCoords = new List<Coords>() { new Coords(2,3), new Coords(2, 4), new Coords(3, 5), new Coords(4,3), new Coords(4, 5) };
+            this.AliveCellsCoords = new List<Coords>() { new Coords(1,2), new Coords(1, 3), new Coords(1, 4) };
             this.grid = new Grid(n, AliveCellsCoords);
         }
 

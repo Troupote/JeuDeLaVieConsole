@@ -29,7 +29,7 @@ namespace JeuDeLaVieConsole
             {
                 for (int j = 0; j < n; j++)
                 {
-                    Coords currentCoords = new Coords(i + 1, j + 1);
+                    Coords currentCoords = new Coords(i, j);
                     if (AliveCellsCoords.Contains(currentCoords))
                     {
                         TabCells[i, j] = new Cell(true);
@@ -46,7 +46,7 @@ namespace JeuDeLaVieConsole
         public int getNbAliveNeighboor(int i, int j)
         {
             int Counter = 0;
-            List<Coords> Neighbors = getCoordsNeighbors(i + 1, j + 1);
+            List<Coords> Neighbors = getCoordsNeighbors(i, j);
 
             foreach (Coords neighbor in Neighbors)
             {
@@ -62,9 +62,9 @@ namespace JeuDeLaVieConsole
         public List<Coords> getCoordsNeighbors(int i, int j)
         {
             List<Coords> ToReturn = new List<Coords>();
-            for (int k = i - 1; k <= i + 2; k++)
+            for (int k = i - 1; k <= i + 1; k++)
             {
-                for (int l = j - 1; l <= j + 2; l++)
+                for (int l = j - 1; l <= j + 1; l++)
                 {
                     if ((k >= 0 && k < n && l >= 0 && l < n) && (k != i || l != j))
                     {
@@ -86,7 +86,7 @@ namespace JeuDeLaVieConsole
                 {
                     if (TabCells[i, j].isAlive)
                     {
-                        ToReturn.Add(new Coords(i + 1, j + 1));
+                        ToReturn.Add(new Coords(i, j));
                     }
                 }
 
@@ -133,20 +133,16 @@ namespace JeuDeLaVieConsole
             {
                 for (int j = 0; j < n; j++)
                 {
-                    int NbAlive = this.getNbAliveNeighboor(i, j);
+                    int aliveNeighbors = getNbAliveNeighboor(i, j);
                     if (TabCells[i, j].isAlive)
                     {
-                        if (NbAlive < 2 || NbAlive > 3)
-                        {
-                            TabCells[i, j].PassAway();
-                        }
+                        // Une cellule vivante reste en vie si elle a 2 ou 3 voisins vivants
+                        TabCells[i, j].nextState = (aliveNeighbors == 2 || aliveNeighbors == 3);
                     }
                     else
                     {
-                        if (NbAlive == 3)
-                        {
-                            TabCells[i, j].ComeAlive();
-                        }
+                        // Une cellule morte devient vivante si elle a exactement 3 voisins vivants
+                        TabCells[i, j].nextState = (aliveNeighbors == 3);
                     }
                 }
             }
@@ -155,7 +151,7 @@ namespace JeuDeLaVieConsole
             {
                 for (int j = 0; j < n; j++)
                 {
-                    TabCells[i, j].Update();
+                    TabCells[i, j].isAlive = TabCells[i, j].nextState;
                 }
             }
         }
