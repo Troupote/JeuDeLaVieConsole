@@ -25,11 +25,6 @@ namespace JeuDeLaVieConsole
             set { _y = value; }
         }
 
-        private int _z;
-
-
-
-
         public Coords (int X, int Y)
         {
             x = X;
